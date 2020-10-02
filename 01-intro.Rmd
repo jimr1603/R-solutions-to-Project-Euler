@@ -1,0 +1,9 @@
+# Introduction {#intro}
+
+There's lots of intro to R books on [Bookdown](https://bookdown.org/), why do we need another?
+
+Ultimately, we don't - but I hope that this project will be useful for students and contributors.
+
+For students, I like the [Project Euler](https://projecteuler.net/) problems for learning a language. It's my hope that worked examples will be useful to someone.
+
+For contributors, they say you don't understand something properly until you can explain it to someone else. So contributors can gain something from submitting solutions via a GitHub Pull Request. (TODO: link to project's GH)

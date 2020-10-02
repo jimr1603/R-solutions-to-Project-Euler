@@ -1,0 +1,22 @@
+--- 
+title: "Worked Solutions to Project Euler in R"
+author: "James Riley"
+date: "`r Sys.Date()`"
+bibliography:
+- book.bib
+- packages.bib
+description: ''
+documentclass: book
+link-citations: yes
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+# index
