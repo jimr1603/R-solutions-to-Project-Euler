@@ -1,4 +1,4 @@
-<img src=="https://cdn-images-1.medium.com/max/1200/1*0NtkTQD8trRauRfEU2Nmhg.png"/>
+![Project Euler Logo](https://cdn-images-1.medium.com/max/1200/1*0NtkTQD8trRauRfEU2Nmhg.png)
 
 # What is Project Euler?
 
