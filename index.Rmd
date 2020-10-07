@@ -1,6 +1,6 @@
 --- 
 title: "Worked Solutions to Project Euler in R"
-author: "James Riley"
+author: "See contributing.md"
 date: "`r Sys.Date()`"
 bibliography:
 - book.bib
