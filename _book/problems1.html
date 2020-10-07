@@ -149,6 +149,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.1" data-path="problems1.html"><a href="problems1.html#base-r-1"><i class="fa fa-check"></i><b>3.3.1</b> Base R</a></li>
 <li class="chapter" data-level="3.3.2" data-path="problems1.html"><a href="problems1.html#tidyverse-1"><i class="fa fa-check"></i><b>3.3.2</b> Tidyverse</a></li>
 </ul></li>
+<li class="chapter" data-level="3.4" data-path="problems1.html"><a href="problems1.html#problem-3"><i class="fa fa-check"></i><b>3.4</b> Problem 3</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="problems1.html"><a href="problems1.html#base-r-2"><i class="fa fa-check"></i><b>3.4.1</b> Base R</a></li>
+<li class="chapter" data-level="3.4.2" data-path="problems1.html"><a href="problems1.html#tidyverse-2"><i class="fa fa-check"></i><b>3.4.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.4.3" data-path="problems1.html"><a href="problems1.html#closing"><i class="fa fa-check"></i><b>3.4.3</b> Closing</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -267,6 +272,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div id="problem-3" class="section level2">
+<h2><span class="header-section-number">3.4</span> Problem 3</h2>
+<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+<p>What is the largest prime factor of the number 600851475143 ?</p>
+<p><a href="https://projecteuler.net/problem=3">Largest prime factor</a></p>
+<blockquote>
+<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+<p>What is the largest prime factor of the number 600851475143 ?</p>
+</blockquote>
+<div id="base-r-2" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Base R</h3>
+<p>We need two tools for this - a test for what numbers are factors of 600851475143, and what numbers are prime.</p>
+<p>Base R has <code>%%</code> which gives divisibility. If <code>x %% y == 0</code> then x divided by y leaves remainder 0, i.e. y is a factor of x.</p>
+<p>A prime number is one that only has 1 and itself as a factor. It is sufficient to test up to the square root of the number we’re testing. We can write that as a function:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="problems1.html#cb13-1"></a>is_prime &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb13-2"><a href="problems1.html#cb13-2"></a>  <span class="co"># Tests if x is prime</span></span>
+<span id="cb13-3"><a href="problems1.html#cb13-3"></a>  <span class="co"># RETURNS:</span></span>
+<span id="cb13-4"><a href="problems1.html#cb13-4"></a>  <span class="co"># True if x is prime</span></span>
+<span id="cb13-5"><a href="problems1.html#cb13-5"></a>  <span class="co"># False if x is not prime</span></span>
+<span id="cb13-6"><a href="problems1.html#cb13-6"></a></span>
+<span id="cb13-7"><a href="problems1.html#cb13-7"></a>  <span class="cf">if</span> (x <span class="op">!=</span><span class="st"> </span><span class="kw">round</span>(x)) <span class="kw">return</span>(<span class="ot">FALSE</span>) <span class="co"># x is not a whole number</span></span>
+<span id="cb13-8"><a href="problems1.html#cb13-8"></a>  <span class="cf">if</span> (x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) <span class="kw">return</span>(<span class="ot">TRUE</span>) <span class="co"># test below fails on 2</span></span>
+<span id="cb13-9"><a href="problems1.html#cb13-9"></a></span>
+<span id="cb13-10"><a href="problems1.html#cb13-10"></a>  test &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>,</span>
+<span id="cb13-11"><a href="problems1.html#cb13-11"></a>      <span class="dt">to =</span> <span class="kw">ceiling</span>(<span class="kw">sqrt</span>(x)),</span>
+<span id="cb13-12"><a href="problems1.html#cb13-12"></a>      <span class="dt">by =</span> <span class="dv">1</span>)</span>
+<span id="cb13-13"><a href="problems1.html#cb13-13"></a>  </span>
+<span id="cb13-14"><a href="problems1.html#cb13-14"></a>  <span class="kw">all</span>(x <span class="op">%%</span><span class="st"> </span>test <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb13-15"><a href="problems1.html#cb13-15"></a>}</span></code></pre></div>
+<p>I would normally start with a vector <code>1:600851475143</code>, but my machine refuses to build a vector that will be 4 Tb in size! If 600851475143 is prime, then this question is slightly boring.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="problems1.html#cb14-1"></a>target &lt;-<span class="st"> </span><span class="dv">600851475143</span></span>
+<span id="cb14-2"><a href="problems1.html#cb14-2"></a></span>
+<span id="cb14-3"><a href="problems1.html#cb14-3"></a><span class="kw">is_prime</span>(target)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>So 6.008514810^{11} is not prime, so we are looking for a proper factor.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="problems1.html#cb16-1"></a>factors &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>,</span>
+<span id="cb16-2"><a href="problems1.html#cb16-2"></a>               <span class="dt">to =</span> <span class="kw">ceiling</span>(<span class="kw">sqrt</span>(target)))</span>
+<span id="cb16-3"><a href="problems1.html#cb16-3"></a></span>
+<span id="cb16-4"><a href="problems1.html#cb16-4"></a>factors &lt;-<span class="st"> </span>factors[target <span class="op">%%</span><span class="st"> </span>factors <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] <span class="co"># which of these numbers are factors?</span></span>
+<span id="cb16-5"><a href="problems1.html#cb16-5"></a></span>
+<span id="cb16-6"><a href="problems1.html#cb16-6"></a>prime_factors &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb16-7"><a href="problems1.html#cb16-7"></a></span>
+<span id="cb16-8"><a href="problems1.html#cb16-8"></a><span class="cf">for</span> (i <span class="cf">in</span> factors) {</span>
+<span id="cb16-9"><a href="problems1.html#cb16-9"></a>  <span class="cf">if</span> (<span class="kw">is_prime</span>(i)) {</span>
+<span id="cb16-10"><a href="problems1.html#cb16-10"></a>    prime_factors &lt;-<span class="st"> </span><span class="kw">c</span>(prime_factors, i)</span>
+<span id="cb16-11"><a href="problems1.html#cb16-11"></a>  }</span>
+<span id="cb16-12"><a href="problems1.html#cb16-12"></a>}</span>
+<span id="cb16-13"><a href="problems1.html#cb16-13"></a></span>
+<span id="cb16-14"><a href="problems1.html#cb16-14"></a><span class="kw">max</span>(prime_factors) <span class="co"># which prime factor is largest?</span></span></code></pre></div>
+<pre><code>## [1] 6857</code></pre>
+<p>The for-loop was necessary because my <code>is_prime</code> function is not vectorised.</p>
+</div>
+<div id="tidyverse-2" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Tidyverse</h3>
+<p>I will keep <code>is_prime</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="problems1.html#cb18-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>,</span>
+<span id="cb18-2"><a href="problems1.html#cb18-2"></a>               <span class="dt">to =</span> <span class="kw">ceiling</span>(<span class="kw">sqrt</span>(target)))) <span class="op">%&gt;%</span></span>
+<span id="cb18-3"><a href="problems1.html#cb18-3"></a><span class="st">         </span><span class="kw">filter</span>(target <span class="op">%%</span><span class="st"> </span>x <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb18-4"><a href="problems1.html#cb18-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prime =</span> <span class="kw">map_lgl</span>(x, is_prime)) <span class="op">%&gt;%</span></span>
+<span id="cb18-5"><a href="problems1.html#cb18-5"></a><span class="st">  </span><span class="kw">filter</span>(prime) <span class="op">%&gt;%</span></span>
+<span id="cb18-6"><a href="problems1.html#cb18-6"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>prime) <span class="op">%&gt;%</span></span>
+<span id="cb18-7"><a href="problems1.html#cb18-7"></a><span class="st">  </span><span class="kw">slice_max</span>(x) <span class="op">%&gt;%</span></span>
+<span id="cb18-8"><a href="problems1.html#cb18-8"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">prime_factor =</span> x) <span class="op">%&gt;%</span></span>
+<span id="cb18-9"><a href="problems1.html#cb18-9"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">prime_factor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">6857</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>map_lgl</code> lets us use the <code>is_prime</code> function which only expects 1 number at a time, and apply it to each factor of 6.008514810^{11} in turn. The rest is filtering that we should be familiar with by now.</p>
+</div>
+<div id="closing" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Closing</h3>
+<p>Now that we know that we can write code that tests for prime-ness, I’m going to use the <a href="https://rdrr.io/cran/primes/f/README.md">Primes</a> package from now on. <em>This is not cheating!</em> Using library functions reduces the chance of us making errors, and is often faster than what we would think of writing.</p>
 
 </div>
 </div>

@@ -105,3 +105,95 @@ tibble(fib) %>%
   summarise(sum = sum(fib)) %>%
   knitr::kable()
 ```
+
+## Problem 3
+
+
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?
+
+[Largest prime factor](https://projecteuler.net/problem=3)
+
+> The prime factors of 13195 are 5, 7, 13 and 29.
+>
+> What is the largest prime factor of the number 600851475143 ?
+
+### Base R
+
+We need two tools for this - a test for what numbers are factors of 600851475143, and what numbers are prime.
+
+Base R has `%%` which gives divisibility. If `x %% y == 0` then x divided by y leaves remainder 0, i.e. y is a factor of x.
+
+A prime number is one that only has 1 and itself as a factor. It is sufficient to test up to the square root of the number we're testing. We can write that as a function:
+
+```{r}
+is_prime <- function(x) {
+  # Tests if x is prime
+  # RETURNS:
+  # True if x is prime
+  # False if x is not prime
+
+  if (x != round(x)) return(FALSE) # x is not a whole number
+  if (x == 2) return(TRUE) # test below fails on 2
+
+  test <- seq(from = 2,
+      to = ceiling(sqrt(x)),
+      by = 1)
+  
+  all(x %% test != 0)
+}
+```
+
+I would normally start with a vector `1:600851475143`, but my machine refuses to build a vector that will be 4 Tb in size! If 600851475143 is prime, then this question is slightly boring.
+
+```{r}
+target <- 600851475143
+
+is_prime(target)
+```
+
+So `r target` is not prime, so we are looking for a proper factor.
+
+```{r}
+factors <- seq(from = 2,
+               to = ceiling(sqrt(target)))
+
+factors <- factors[target %% factors == 0] # which of these numbers are factors?
+
+prime_factors <- c()
+
+for (i in factors) {
+  if (is_prime(i)) {
+    prime_factors <- c(prime_factors, i)
+  }
+}
+
+max(prime_factors) # which prime factor is largest?
+
+```
+
+The for-loop was necessary because my `is_prime` function is not vectorised.
+
+### Tidyverse 
+
+I will keep `is_prime`.
+
+```{r}
+tibble(x = seq(from = 2,
+               to = ceiling(sqrt(target)))) %>%
+         filter(target %% x == 0) %>%
+  mutate(prime = map_lgl(x, is_prime)) %>%
+  filter(prime) %>%
+  select(-prime) %>%
+  slice_max(x) %>%
+  rename(prime_factor = x) %>%
+  knitr::kable()
+```
+
+The `map_lgl` lets us use the `is_prime` function which only expects 1 number at a time, and apply it to each factor of `r target` in turn. The rest is filtering that we should be familiar with by now.
+
+
+### Closing
+
+Now that we know that we can write code that tests for prime-ness, I'm going to use the [Primes](https://rdrr.io/cran/primes/f/README.md) package from now on. *This is not cheating!* Using library functions reduces the chance of us making errors, and is often faster than what we would think of writing. 
