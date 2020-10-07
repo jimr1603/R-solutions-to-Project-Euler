@@ -1,4 +1,4 @@
-<img src=="https://cdn-images-1.medium.com/max/1200/1*0NtkTQD8trRauRfEU2Nmhg.png"/>
+![Project Euler Logo](https://cdn-images-1.medium.com/max/1200/1*0NtkTQD8trRauRfEU2Nmhg.png)
 
 # What is Project Euler?
 
@@ -23,14 +23,16 @@ Make a pull request for your work and wait for it to be merged!
 Getting started:
 1. Fork this repository
 2. Clone your fork down to your local machine
-    git clone https://github.com/jimr1603/R-solutions-to-Project-Euler.git
+`    git clone https://github.com/jimr1603/R-solutions-to-Project-Euler.git`
 3. Create a branch
-    git checkout -b branch-name
+    `git checkout -b branch-name`
 4. Make your changes
 5. Commit and push
+```    
     git add .
     git commit -m 'Commit message'
     git push origin branch-name
+```
 Create a new pull request from your forked repository (Click the New Pull Request button located at the top of your repo)
 Wait for your PR review and merge approval!
 Star this repository if you had fun!
@@ -38,7 +40,12 @@ Star this repository if you had fun!
 
 Don't forget to add your name to the CONTRIBUTING.md file using the below convention:
 
+
+```
+
 #### Name: YOUR NAME
 - Location: Country
 - Bio: Who are you? Your interests?
 - GitHub: [GitHub account name](GitHub link)
+
+```
