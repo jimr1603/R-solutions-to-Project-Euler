@@ -8,3 +8,7 @@
 - Bio: Operational Researcher & Computability Theorist
 - GitHub: [jimr1603](https://github.com/jimr1603)
 
+#### Name: Toby Crisford
+- Location: UK
+- Bio: Operational Researcher & Data Scientist
+- GitHub [tcrisford](https://github.com/tobycrisford)
