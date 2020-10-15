@@ -12,3 +12,8 @@
 - Location: UK
 - Bio: Operational Researcher & Data Scientist
 - GitHub [tcrisford](https://github.com/tobycrisford)
+
+#### Name: Martine Wauben
+- Location: UK
+- Bio: Data Scientist
+- GitHub [MHWauben](https://github.com/MHWauben)

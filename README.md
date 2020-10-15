@@ -15,7 +15,7 @@ Here, in this repository you can find the solutions to the various problems for 
 
 
 # How to contribute to this project?
-You may solve any problem in the scope of [Project Euler](https://github.com/jimr1603/R-solutions-to-Project-Euler.git) and mention your name to the CONTRIBUTORS.md file.
+You may solve any problem in the scope of [Project Euler](https://projecteuler.net/about) and mention your name to the CONTRIBUTORS.md file.
 Make a pull request for your work and wait for it to be merged!
 
 # REMEMBER: Anyone can make a PR
