@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Problem set 1 | Worked Solutions to Project Euler in R</title>
   <meta name="description" content="Chapter 2 Problem set 1 | Worked Solutions to Project Euler in R" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Problem set 1 | Worked Solutions to Project Euler in R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="See contributing.md" />
 
 
-<meta name="date" content="2020-10-09" />
+<meta name="date" content="2021-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,9 @@
   
 <link rel="prev" href="index.html"/>
 
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +51,23 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -131,29 +134,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-is-project-euler"><i class="fa fa-check"></i><b>1.1</b> What is Project Euler?</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#who-are-the-problems-aimed-at"><i class="fa fa-check"></i><b>1.2</b> Who are the problems aimed at?</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-contribute-to-this-project"><i class="fa fa-check"></i><b>1.3</b> How to contribute to this project?</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#remember-anyone-can-make-a-pr"><i class="fa fa-check"></i><b>1.4</b> REMEMBER: Anyone can make a PR</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="problems1.html"><a href="problems1.html"><i class="fa fa-check"></i><b>2</b> Problem set 1</a><ul>
-<li class="chapter" data-level="2.1" data-path="index.html"><a href="index.html#intro"><i class="fa fa-check"></i><b>2.1</b> Intro</a></li>
-<li class="chapter" data-level="2.2" data-path="problems1.html"><a href="problems1.html#problem-1"><i class="fa fa-check"></i><b>2.2</b> Problem 1</a><ul>
+<li class="chapter" data-level="2" data-path="problems1.html"><a href="problems1.html"><i class="fa fa-check"></i><b>2</b> Problem set 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="problems1.html"><a href="problems1.html#intro-1"><i class="fa fa-check"></i><b>2.1</b> Intro</a></li>
+<li class="chapter" data-level="2.2" data-path="problems1.html"><a href="problems1.html#problem-1"><i class="fa fa-check"></i><b>2.2</b> Problem 1</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="problems1.html"><a href="problems1.html#base-r"><i class="fa fa-check"></i><b>2.2.1</b> Base R</a></li>
 <li class="chapter" data-level="2.2.2" data-path="problems1.html"><a href="problems1.html#tidyverse"><i class="fa fa-check"></i><b>2.2.2</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.2.3" data-path="problems1.html"><a href="problems1.html#other-comments"><i class="fa fa-check"></i><b>2.2.3</b> Other Comments</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="problems1.html"><a href="problems1.html#problem-2"><i class="fa fa-check"></i><b>2.3</b> Problem 2</a><ul>
+<li class="chapter" data-level="2.3" data-path="problems1.html"><a href="problems1.html#problem-2"><i class="fa fa-check"></i><b>2.3</b> Problem 2</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="problems1.html"><a href="problems1.html#base-r-1"><i class="fa fa-check"></i><b>2.3.1</b> Base R</a></li>
 <li class="chapter" data-level="2.3.2" data-path="problems1.html"><a href="problems1.html#tidyverse-1"><i class="fa fa-check"></i><b>2.3.2</b> Tidyverse</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="problems1.html"><a href="problems1.html#problem-3"><i class="fa fa-check"></i><b>2.4</b> Problem 3</a><ul>
+<li class="chapter" data-level="2.4" data-path="problems1.html"><a href="problems1.html#problem-3"><i class="fa fa-check"></i><b>2.4</b> Problem 3</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="problems1.html"><a href="problems1.html#base-r-2"><i class="fa fa-check"></i><b>2.4.1</b> Base R</a></li>
 <li class="chapter" data-level="2.4.2" data-path="problems1.html"><a href="problems1.html#tidyverse-2"><i class="fa fa-check"></i><b>2.4.2</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.4.3" data-path="problems1.html"><a href="problems1.html#closing"><i class="fa fa-check"></i><b>2.4.3</b> Closing</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="problems1.html"><a href="problems1.html#problem-4"><i class="fa fa-check"></i><b>2.5</b> Problem 4</a><ul>
+<li class="chapter" data-level="2.5" data-path="problems1.html"><a href="problems1.html#problem-4"><i class="fa fa-check"></i><b>2.5</b> Problem 4</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="problems1.html"><a href="problems1.html#initial-thoughts"><i class="fa fa-check"></i><b>2.5.1</b> Initial thoughts</a></li>
 <li class="chapter" data-level="2.5.2" data-path="problems1.html"><a href="problems1.html#method-a"><i class="fa fa-check"></i><b>2.5.2</b> Method A</a></li>
 <li class="chapter" data-level="2.5.3" data-path="problems1.html"><a href="problems1.html#method-b"><i class="fa fa-check"></i><b>2.5.3</b> Method B</a></li>
@@ -179,37 +188,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="problems1" class="section level1">
+<div id="problems1" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Problem set 1</h1>
-<div id="intro" class="section level2">
+<div id="intro-1" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Intro</h2>
 <p>For this section I’m planning on giving two solutions - one in base R, one with Tidyverse. I hope to demonstrate that Tidyverse solutions are easier to follow.</p>
 </div>
-<div id="problem-1" class="section level2">
+<div id="problem-1" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Problem 1</h2>
 <p><a href="https://projecteuler.net/problem=1">Multiples of 3 and 5</a></p>
 <blockquote>
 <p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
 <p>Find the sum of all the multiples of 3 or 5 below 1000.</p>
 </blockquote>
-<div id="base-r" class="section level3">
+<div id="base-r" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Base R</h3>
 <p>For this I’d like to start with a vector from 1:1000:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="problems1.html#cb3-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">999</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="problems1.html#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">999</span></span></code></pre></div>
 <p>Then filter for multiples of 3 or 5:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="problems1.html#cb4-1"></a>x &lt;-<span class="st"> </span>x[x <span class="op">%%</span><span class="st"> </span><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] <span class="co"># x modulo 3 = 0 or x modulo 5 = 0.</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="problems1.html#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x[x <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>] <span class="co"># x modulo 3 = 0 or x modulo 5 = 0.</span></span></code></pre></div>
 <p>And finally, sum:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="problems1.html#cb5-1"></a><span class="kw">sum</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="problems1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code></pre></div>
 <pre><code>## [1] 233168</code></pre>
 </div>
-<div id="tidyverse" class="section level3">
+<div id="tidyverse" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Tidyverse</h3>
 <p>This is easy enough to do with a single pipe:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="problems1.html#cb7-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb7-2"><a href="problems1.html#cb7-2"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">999</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Start with all numbers 1:999</span></span>
-<span id="cb7-3"><a href="problems1.html#cb7-3"></a><span class="st">  </span><span class="kw">filter</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># keep multiples of 3 or 5</span></span>
-<span id="cb7-4"><a href="problems1.html#cb7-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">solution =</span> <span class="kw">sum</span>(x)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Add them together</span></span>
-<span id="cb7-5"><a href="problems1.html#cb7-5"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="co"># Print it as a table</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="problems1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb7-2"><a href="problems1.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">999</span>) <span class="sc">%&gt;%</span> <span class="co"># Start with all numbers 1:999</span></span>
+<span id="cb7-3"><a href="problems1.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># keep multiples of 3 or 5</span></span>
+<span id="cb7-4"><a href="problems1.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">solution =</span> <span class="fu">sum</span>(x)) <span class="sc">%&gt;%</span> <span class="co"># Add them together</span></span>
+<span id="cb7-5"><a href="problems1.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="co"># Print it as a table</span></span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -223,13 +232,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="other-comments" class="section level3">
+<div id="other-comments" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Other Comments</h3>
 <p>You can also do this as an inclusion/exclusion problem. You can add up the multiples of 3, plus the multiples of 5, but then you’ve double-counted the multiples of 3 &amp; 5, so you need to subtract the multiples of 15.</p>
 <p>R has no problems with a 999-element vector, so in this case I prefer starting with every integer and filtering down to reduce the risk of programmer error.</p>
 </div>
 </div>
-<div id="problem-2" class="section level2">
+<div id="problem-2" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Problem 2</h2>
 <p><a href="https://projecteuler.net/problem=2">Even Fibonacci numbers</a></p>
 <blockquote>
@@ -237,33 +246,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>1, 2, 3, 5, 8, 13, 21, 34, 55, 89, …</p>
 <p>By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.</p>
 </blockquote>
-<div id="base-r-1" class="section level3">
+<div id="base-r-1" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Base R</h3>
 <p>We need a loop to define the next Fibonacci number.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="problems1.html#cb8-1"></a>fib &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb8-2"><a href="problems1.html#cb8-2"></a></span>
-<span id="cb8-3"><a href="problems1.html#cb8-3"></a><span class="cf">while</span> (fib[<span class="kw">length</span>(fib)] <span class="op">&lt;</span><span class="st"> </span><span class="dv">4000000</span>) {</span>
-<span id="cb8-4"><a href="problems1.html#cb8-4"></a>  new_fib &lt;-<span class="st"> </span>fib[<span class="kw">length</span>(fib)] <span class="op">+</span><span class="st"> </span>fib[<span class="kw">length</span>(fib) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="co"># sum of last 2 values</span></span>
-<span id="cb8-5"><a href="problems1.html#cb8-5"></a>  fib &lt;-<span class="st"> </span><span class="kw">c</span>(fib, new_fib) <span class="co"># extend the vector</span></span>
-<span id="cb8-6"><a href="problems1.html#cb8-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="problems1.html#cb8-1" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb8-2"><a href="problems1.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="problems1.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (fib[<span class="fu">length</span>(fib)] <span class="sc">&lt;</span> <span class="dv">4000000</span>) {</span>
+<span id="cb8-4"><a href="problems1.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  new_fib <span class="ot">&lt;-</span> fib[<span class="fu">length</span>(fib)] <span class="sc">+</span> fib[<span class="fu">length</span>(fib) <span class="sc">-</span> <span class="dv">1</span>] <span class="co"># sum of last 2 values</span></span>
+<span id="cb8-5"><a href="problems1.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  fib <span class="ot">&lt;-</span> <span class="fu">c</span>(fib, new_fib) <span class="co"># extend the vector</span></span>
+<span id="cb8-6"><a href="problems1.html#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Then filter and sum:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="problems1.html#cb9-1"></a><span class="kw">sum</span>(fib[fib <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>fib <span class="op">&lt;</span><span class="st"> </span><span class="dv">4000000</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="problems1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(fib[fib <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> fib <span class="sc">&lt;</span> <span class="dv">4000000</span>])</span></code></pre></div>
 <pre><code>## [1] 4613732</code></pre>
 </div>
-<div id="tidyverse-1" class="section level3">
+<div id="tidyverse-1" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Tidyverse</h3>
 <p>We still need our loop, but we can use {dplyr}’s <code>last</code> function.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="problems1.html#cb11-1"></a>fib &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb11-2"><a href="problems1.html#cb11-2"></a></span>
-<span id="cb11-3"><a href="problems1.html#cb11-3"></a><span class="cf">while</span> (<span class="kw">last</span>(fib) <span class="op">&lt;</span><span class="st"> </span><span class="dv">4000000</span>) {</span>
-<span id="cb11-4"><a href="problems1.html#cb11-4"></a>  new_fib &lt;-<span class="st"> </span><span class="kw">last</span>(fib) <span class="op">+</span><span class="st"> </span><span class="kw">nth</span>(fib, <span class="dv">-2</span>) <span class="co"># sum of last 2 values</span></span>
-<span id="cb11-5"><a href="problems1.html#cb11-5"></a>  fib &lt;-<span class="st"> </span><span class="kw">c</span>(fib, new_fib) <span class="co"># extend the vector</span></span>
-<span id="cb11-6"><a href="problems1.html#cb11-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="problems1.html#cb11-1" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="problems1.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="problems1.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (<span class="fu">last</span>(fib) <span class="sc">&lt;</span> <span class="dv">4000000</span>) {</span>
+<span id="cb11-4"><a href="problems1.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  new_fib <span class="ot">&lt;-</span> <span class="fu">last</span>(fib) <span class="sc">+</span> <span class="fu">nth</span>(fib, <span class="sc">-</span><span class="dv">2</span>) <span class="co"># sum of last 2 values</span></span>
+<span id="cb11-5"><a href="problems1.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  fib <span class="ot">&lt;-</span> <span class="fu">c</span>(fib, new_fib) <span class="co"># extend the vector</span></span>
+<span id="cb11-6"><a href="problems1.html#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Then the filter and sum is a bit clearer:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="problems1.html#cb12-1"></a><span class="kw">tibble</span>(fib) <span class="op">%&gt;%</span></span>
-<span id="cb12-2"><a href="problems1.html#cb12-2"></a><span class="st">  </span><span class="kw">filter</span>(fib <span class="op">&lt;</span><span class="st"> </span><span class="dv">4000000</span>, fib <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb12-3"><a href="problems1.html#cb12-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">sum =</span> <span class="kw">sum</span>(fib)) <span class="op">%&gt;%</span></span>
-<span id="cb12-4"><a href="problems1.html#cb12-4"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="problems1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(fib) <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="problems1.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fib <span class="sc">&lt;</span> <span class="dv">4000000</span>, fib <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="problems1.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">sum</span>(fib)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="problems1.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -278,7 +287,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 </div>
-<div id="problem-3" class="section level2">
+<div id="problem-3" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Problem 3</h2>
 <p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
 <p>What is the largest prime factor of the number 600851475143 ?</p>
@@ -287,61 +296,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
 <p>What is the largest prime factor of the number 600851475143 ?</p>
 </blockquote>
-<div id="base-r-2" class="section level3">
+<div id="base-r-2" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Base R</h3>
 <p>We need two tools for this - a test for what numbers are factors of 600851475143, and what numbers are prime.</p>
 <p>Base R has <code>%%</code> which gives divisibility. If <code>x %% y == 0</code> then x divided by y leaves remainder 0, i.e. y is a factor of x.</p>
 <p>A prime number is one that only has 1 and itself as a factor. It is sufficient to test up to the square root of the number we’re testing. We can write that as a function:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="problems1.html#cb13-1"></a>is_prime &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb13-2"><a href="problems1.html#cb13-2"></a>  <span class="co"># Tests if x is prime</span></span>
-<span id="cb13-3"><a href="problems1.html#cb13-3"></a>  <span class="co"># RETURNS:</span></span>
-<span id="cb13-4"><a href="problems1.html#cb13-4"></a>  <span class="co"># True if x is prime</span></span>
-<span id="cb13-5"><a href="problems1.html#cb13-5"></a>  <span class="co"># False if x is not prime</span></span>
-<span id="cb13-6"><a href="problems1.html#cb13-6"></a></span>
-<span id="cb13-7"><a href="problems1.html#cb13-7"></a>  <span class="cf">if</span> (x <span class="op">!=</span><span class="st"> </span><span class="kw">round</span>(x)) <span class="kw">return</span>(<span class="ot">FALSE</span>) <span class="co"># x is not a whole number</span></span>
-<span id="cb13-8"><a href="problems1.html#cb13-8"></a>  <span class="cf">if</span> (x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) <span class="kw">return</span>(<span class="ot">TRUE</span>) <span class="co"># test below fails on 2</span></span>
-<span id="cb13-9"><a href="problems1.html#cb13-9"></a></span>
-<span id="cb13-10"><a href="problems1.html#cb13-10"></a>  test &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>,</span>
-<span id="cb13-11"><a href="problems1.html#cb13-11"></a>      <span class="dt">to =</span> <span class="kw">ceiling</span>(<span class="kw">sqrt</span>(x)),</span>
-<span id="cb13-12"><a href="problems1.html#cb13-12"></a>      <span class="dt">by =</span> <span class="dv">1</span>)</span>
-<span id="cb13-13"><a href="problems1.html#cb13-13"></a>  </span>
-<span id="cb13-14"><a href="problems1.html#cb13-14"></a>  <span class="kw">all</span>(x <span class="op">%%</span><span class="st"> </span>test <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</span>
-<span id="cb13-15"><a href="problems1.html#cb13-15"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="problems1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>is_prime <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb13-2"><a href="problems1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Tests if x is prime</span></span>
+<span id="cb13-3"><a href="problems1.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># RETURNS:</span></span>
+<span id="cb13-4"><a href="problems1.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># True if x is prime</span></span>
+<span id="cb13-5"><a href="problems1.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># False if x is not prime</span></span>
+<span id="cb13-6"><a href="problems1.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="problems1.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">!=</span> <span class="fu">round</span>(x)) <span class="fu">return</span>(<span class="cn">FALSE</span>) <span class="co"># x is not a whole number</span></span>
+<span id="cb13-8"><a href="problems1.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">==</span> <span class="dv">2</span>) <span class="fu">return</span>(<span class="cn">TRUE</span>) <span class="co"># test below fails on 2</span></span>
+<span id="cb13-9"><a href="problems1.html#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="problems1.html#cb13-10" aria-hidden="true" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>,</span>
+<span id="cb13-11"><a href="problems1.html#cb13-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">to =</span> <span class="fu">ceiling</span>(<span class="fu">sqrt</span>(x)),</span>
+<span id="cb13-12"><a href="problems1.html#cb13-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb13-13"><a href="problems1.html#cb13-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-14"><a href="problems1.html#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(x <span class="sc">%%</span> test <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb13-15"><a href="problems1.html#cb13-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>I would normally start with a vector <code>1:600851475143</code>, but my machine refuses to build a vector that will be 4 Tb in size! If 600851475143 is prime, then this question is slightly boring.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="problems1.html#cb14-1"></a>target &lt;-<span class="st"> </span><span class="dv">600851475143</span></span>
-<span id="cb14-2"><a href="problems1.html#cb14-2"></a></span>
-<span id="cb14-3"><a href="problems1.html#cb14-3"></a><span class="kw">is_prime</span>(target)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="problems1.html#cb14-1" aria-hidden="true" tabindex="-1"></a>target <span class="ot">&lt;-</span> <span class="dv">600851475143</span></span>
+<span id="cb14-2"><a href="problems1.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="problems1.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is_prime</span>(target)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<p>So 6.008514810^{11} is not prime, so we are looking for a proper factor.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="problems1.html#cb16-1"></a>factors &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>,</span>
-<span id="cb16-2"><a href="problems1.html#cb16-2"></a>               <span class="dt">to =</span> <span class="kw">ceiling</span>(<span class="kw">sqrt</span>(target)))</span>
-<span id="cb16-3"><a href="problems1.html#cb16-3"></a></span>
-<span id="cb16-4"><a href="problems1.html#cb16-4"></a>factors &lt;-<span class="st"> </span>factors[target <span class="op">%%</span><span class="st"> </span>factors <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] <span class="co"># which of these numbers are factors?</span></span>
-<span id="cb16-5"><a href="problems1.html#cb16-5"></a></span>
-<span id="cb16-6"><a href="problems1.html#cb16-6"></a>prime_factors &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
-<span id="cb16-7"><a href="problems1.html#cb16-7"></a></span>
-<span id="cb16-8"><a href="problems1.html#cb16-8"></a><span class="cf">for</span> (i <span class="cf">in</span> factors) {</span>
-<span id="cb16-9"><a href="problems1.html#cb16-9"></a>  <span class="cf">if</span> (<span class="kw">is_prime</span>(i)) {</span>
-<span id="cb16-10"><a href="problems1.html#cb16-10"></a>    prime_factors &lt;-<span class="st"> </span><span class="kw">c</span>(prime_factors, i)</span>
-<span id="cb16-11"><a href="problems1.html#cb16-11"></a>  }</span>
-<span id="cb16-12"><a href="problems1.html#cb16-12"></a>}</span>
-<span id="cb16-13"><a href="problems1.html#cb16-13"></a></span>
-<span id="cb16-14"><a href="problems1.html#cb16-14"></a><span class="kw">max</span>(prime_factors) <span class="co"># which prime factor is largest?</span></span></code></pre></div>
+<p>So 6.0085148^{11} is not prime, so we are looking for a proper factor.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="problems1.html#cb16-1" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>,</span>
+<span id="cb16-2"><a href="problems1.html#cb16-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">to =</span> <span class="fu">ceiling</span>(<span class="fu">sqrt</span>(target)))</span>
+<span id="cb16-3"><a href="problems1.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="problems1.html#cb16-4" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> factors[target <span class="sc">%%</span> factors <span class="sc">==</span> <span class="dv">0</span>] <span class="co"># which of these numbers are factors?</span></span>
+<span id="cb16-5"><a href="problems1.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="problems1.html#cb16-6" aria-hidden="true" tabindex="-1"></a>prime_factors <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb16-7"><a href="problems1.html#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="problems1.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> factors) {</span>
+<span id="cb16-9"><a href="problems1.html#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is_prime</span>(i)) {</span>
+<span id="cb16-10"><a href="problems1.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    prime_factors <span class="ot">&lt;-</span> <span class="fu">c</span>(prime_factors, i)</span>
+<span id="cb16-11"><a href="problems1.html#cb16-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-12"><a href="problems1.html#cb16-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-13"><a href="problems1.html#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="problems1.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(prime_factors) <span class="co"># which prime factor is largest?</span></span></code></pre></div>
 <pre><code>## [1] 6857</code></pre>
 <p>The for-loop was necessary because my <code>is_prime</code> function is not vectorised.</p>
 </div>
-<div id="tidyverse-2" class="section level3">
+<div id="tidyverse-2" class="section level3" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Tidyverse</h3>
 <p>I will keep <code>is_prime</code>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="problems1.html#cb18-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>,</span>
-<span id="cb18-2"><a href="problems1.html#cb18-2"></a>               <span class="dt">to =</span> <span class="kw">ceiling</span>(<span class="kw">sqrt</span>(target)))) <span class="op">%&gt;%</span></span>
-<span id="cb18-3"><a href="problems1.html#cb18-3"></a><span class="st">         </span><span class="kw">filter</span>(target <span class="op">%%</span><span class="st"> </span>x <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb18-4"><a href="problems1.html#cb18-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prime =</span> <span class="kw">map_lgl</span>(x, is_prime)) <span class="op">%&gt;%</span></span>
-<span id="cb18-5"><a href="problems1.html#cb18-5"></a><span class="st">  </span><span class="kw">filter</span>(prime) <span class="op">%&gt;%</span></span>
-<span id="cb18-6"><a href="problems1.html#cb18-6"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>prime) <span class="op">%&gt;%</span></span>
-<span id="cb18-7"><a href="problems1.html#cb18-7"></a><span class="st">  </span><span class="kw">slice_max</span>(x) <span class="op">%&gt;%</span></span>
-<span id="cb18-8"><a href="problems1.html#cb18-8"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">prime_factor =</span> x) <span class="op">%&gt;%</span></span>
-<span id="cb18-9"><a href="problems1.html#cb18-9"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="problems1.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>,</span>
+<span id="cb18-2"><a href="problems1.html#cb18-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">to =</span> <span class="fu">ceiling</span>(<span class="fu">sqrt</span>(target)))) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="problems1.html#cb18-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">filter</span>(target <span class="sc">%%</span> x <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="problems1.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prime =</span> <span class="fu">map_lgl</span>(x, is_prime)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="problems1.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(prime) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href="problems1.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>prime) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="problems1.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(x) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="problems1.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prime_factor =</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="problems1.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -354,21 +363,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>The <code>map_lgl</code> lets us use the <code>is_prime</code> function which only expects 1 number at a time, and apply it to each factor of 6.008514810^{11} in turn. The rest is filtering that we should be familiar with by now.</p>
+<p>The <code>map_lgl</code> lets us use the <code>is_prime</code> function which only expects 1 number at a time, and apply it to each factor of 6.0085148^{11} in turn. The rest is filtering that we should be familiar with by now.</p>
 </div>
-<div id="closing" class="section level3">
+<div id="closing" class="section level3" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Closing</h3>
 <p>Now that we know that we can write code that tests for prime-ness, I’m going to use the <a href="https://rdrr.io/cran/primes/f/README.md">Primes</a> package from now on. <em>This is not cheating!</em> Using library functions reduces the chance of us making errors, and is often faster than what we would think of writing.</p>
 </div>
 </div>
-<div id="problem-4" class="section level2">
+<div id="problem-4" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Problem 4</h2>
 <p><a href="https://projecteuler.net/problem=4">Largest palindrome product</a></p>
 <blockquote>
 <p>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.</p>
 <p>Find the largest palindrome made from the product of two 3-digit numbers.</p>
 </blockquote>
-<div id="initial-thoughts" class="section level3">
+<div id="initial-thoughts" class="section level3" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Initial thoughts</h3>
 <p>The first thing to note is that the product of two 3-digit numbers must be less than a million, so we expect our palindrome to have 6 digits (although there’s a chance it could have fewer).</p>
 <p>There are two ways we might approach this problem. (A) We could search through pairs of 3-digit numbers, multiply them together, and look for the largest result which is also a palindrome. Or (B), we could search through 6-digit palindromes, and look for the largest palindrome which can be factorised into two 3-digit numbers.</p>
@@ -384,102 +393,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Though based on this, Method B seems like it should still just have the edge. The factor ~1000 differences should cancel out, but B has the early stopping advantage (although the rough order of magnitude estimates in these bullet points need to be made more precise).</p>
 <p>Lets try both methods.</p>
 </div>
-<div id="method-a" class="section level3">
+<div id="method-a" class="section level3" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> Method A</h3>
 <p>First lets create a function to test whether a number is a palindrome. We will only want to apply this to 6-digit numbers, but if we’re writing a function it’s good practice to make it as generic as possible, if it doesn’t take too much effort. This function can test whether a d-digit number, n, is a palindrome or not, for any even d:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="problems1.html#cb19-1"></a><span class="co">#Is a d-digit number, n, a palindrome? (d-even)</span></span>
-<span id="cb19-2"><a href="problems1.html#cb19-2"></a>is_palindrome &lt;-<span class="st"> </span><span class="cf">function</span>(n, d) {</span>
-<span id="cb19-3"><a href="problems1.html#cb19-3"></a>  <span class="cf">if</span> (d <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb19-4"><a href="problems1.html#cb19-4"></a>    <span class="kw">stop</span>(<span class="st">&quot;The number of digits must be even&quot;</span>)</span>
-<span id="cb19-5"><a href="problems1.html#cb19-5"></a>  }</span>
-<span id="cb19-6"><a href="problems1.html#cb19-6"></a>  <span class="cf">if</span> (d <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) {</span>
-<span id="cb19-7"><a href="problems1.html#cb19-7"></a>    <span class="kw">return</span>(n <span class="op">%%</span><span class="st"> </span><span class="dv">11</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</span>
-<span id="cb19-8"><a href="problems1.html#cb19-8"></a>  }</span>
-<span id="cb19-9"><a href="problems1.html#cb19-9"></a>  digits &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>, d <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="co">#For storing the second half of the digits</span></span>
-<span id="cb19-10"><a href="problems1.html#cb19-10"></a>  digits[<span class="dv">1</span>] &lt;-<span class="st"> </span>n <span class="op">%%</span><span class="st"> </span><span class="dv">10</span></span>
-<span id="cb19-11"><a href="problems1.html#cb19-11"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="kw">length</span>(digits)) {</span>
-<span id="cb19-12"><a href="problems1.html#cb19-12"></a>    digits[i] &lt;-<span class="st"> </span>((n <span class="op">%%</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>i)) <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(digits <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>(<span class="dv">0</span><span class="op">:</span>(<span class="kw">length</span>(digits)<span class="op">-</span><span class="dv">1</span>))))) <span class="op">/</span><span class="st"> </span><span class="dv">10</span><span class="op">**</span>(i<span class="dv">-1</span>)</span>
-<span id="cb19-13"><a href="problems1.html#cb19-13"></a>  }</span>
-<span id="cb19-14"><a href="problems1.html#cb19-14"></a></span>
-<span id="cb19-15"><a href="problems1.html#cb19-15"></a>  <span class="co">#Now compare the second half of digits to the first half</span></span>
-<span id="cb19-16"><a href="problems1.html#cb19-16"></a>  <span class="cf">if</span> (<span class="kw">sum</span>(digits <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>((<span class="kw">length</span>(digits) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">0</span>))) <span class="op">==</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(digits <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>(<span class="dv">0</span><span class="op">:</span>(<span class="kw">length</span>(digits) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))))) <span class="op">/</span><span class="st"> </span><span class="dv">10</span><span class="op">**</span><span class="kw">length</span>(digits)) {</span>
-<span id="cb19-17"><a href="problems1.html#cb19-17"></a>    <span class="kw">return</span>(<span class="ot">TRUE</span>)</span>
-<span id="cb19-18"><a href="problems1.html#cb19-18"></a>  } <span class="cf">else</span> {</span>
-<span id="cb19-19"><a href="problems1.html#cb19-19"></a>    <span class="kw">return</span>(<span class="ot">FALSE</span>)</span>
-<span id="cb19-20"><a href="problems1.html#cb19-20"></a>  }</span>
-<span id="cb19-21"><a href="problems1.html#cb19-21"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="problems1.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Is a d-digit number, n, a palindrome? (d-even)</span></span>
+<span id="cb19-2"><a href="problems1.html#cb19-2" aria-hidden="true" tabindex="-1"></a>is_palindrome <span class="ot">&lt;-</span> <span class="cf">function</span>(n, d) {</span>
+<span id="cb19-3"><a href="problems1.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (d <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span>) {</span>
+<span id="cb19-4"><a href="problems1.html#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;The number of digits must be even&quot;</span>)</span>
+<span id="cb19-5"><a href="problems1.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-6"><a href="problems1.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (d <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb19-7"><a href="problems1.html#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(n <span class="sc">%%</span> <span class="dv">11</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb19-8"><a href="problems1.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-9"><a href="problems1.html#cb19-9" aria-hidden="true" tabindex="-1"></a>  digits <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">0</span>, d <span class="sc">/</span> <span class="dv">2</span>) <span class="co">#For storing the second half of the digits</span></span>
+<span id="cb19-10"><a href="problems1.html#cb19-10" aria-hidden="true" tabindex="-1"></a>  digits[<span class="dv">1</span>] <span class="ot">&lt;-</span> n <span class="sc">%%</span> <span class="dv">10</span></span>
+<span id="cb19-11"><a href="problems1.html#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(digits)) {</span>
+<span id="cb19-12"><a href="problems1.html#cb19-12" aria-hidden="true" tabindex="-1"></a>    digits[i] <span class="ot">&lt;-</span> ((n <span class="sc">%%</span> (<span class="dv">10</span><span class="sc">**</span>i)) <span class="sc">-</span> <span class="fu">sum</span>(digits <span class="sc">*</span> (<span class="dv">10</span><span class="sc">**</span>(<span class="dv">0</span><span class="sc">:</span>(<span class="fu">length</span>(digits)<span class="sc">-</span><span class="dv">1</span>))))) <span class="sc">/</span> <span class="dv">10</span><span class="sc">**</span>(i<span class="dv">-1</span>)</span>
+<span id="cb19-13"><a href="problems1.html#cb19-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-14"><a href="problems1.html#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="problems1.html#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Now compare the second half of digits to the first half</span></span>
+<span id="cb19-16"><a href="problems1.html#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(digits <span class="sc">*</span> (<span class="dv">10</span><span class="sc">**</span>((<span class="fu">length</span>(digits) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span><span class="dv">0</span>))) <span class="sc">==</span> (n <span class="sc">-</span> <span class="fu">sum</span>(digits <span class="sc">*</span> (<span class="dv">10</span><span class="sc">**</span>(<span class="dv">0</span><span class="sc">:</span>(<span class="fu">length</span>(digits) <span class="sc">-</span> <span class="dv">1</span>))))) <span class="sc">/</span> <span class="dv">10</span><span class="sc">**</span><span class="fu">length</span>(digits)) {</span>
+<span id="cb19-17"><a href="problems1.html#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb19-18"><a href="problems1.html#cb19-18" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb19-19"><a href="problems1.html#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb19-20"><a href="problems1.html#cb19-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-21"><a href="problems1.html#cb19-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>With this function, we can now search through pairs of 3-digit numbers, multiply them, and test if the result is a palindrome. Multiplication is commutative, so we actually only have to test half of the pairings. But in R, it’s quicker to use vectorisation where we can, so we test them all anyway. The tensor package lets us take a tensor product, a fast way of getting all the possible products of 3-digit numbers. We use Sys.time() to time how long our code takes to execute.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="problems1.html#cb20-1"></a>start_time &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</span>
-<span id="cb20-2"><a href="problems1.html#cb20-2"></a></span>
-<span id="cb20-3"><a href="problems1.html#cb20-3"></a>dplyr<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">array</span>(tensor<span class="op">::</span><span class="kw">tensor</span>(<span class="dv">100</span><span class="op">:</span><span class="dv">999</span>, <span class="dv">100</span><span class="op">:</span><span class="dv">999</span>))) <span class="op">%&gt;%</span></span>
-<span id="cb20-4"><a href="problems1.html#cb20-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">99999</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#We only want to test 6-digit answers. We&#39;re assuming there will be at least one 6-digit palindrome.</span></span>
-<span id="cb20-5"><a href="problems1.html#cb20-5"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">palindrome =</span> purrr<span class="op">::</span><span class="kw">map_lgl</span>(x, is_palindrome, <span class="dv">6</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb20-6"><a href="problems1.html#cb20-6"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(palindrome) <span class="op">%&gt;%</span></span>
-<span id="cb20-7"><a href="problems1.html#cb20-7"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(x <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(x)) <span class="op">%&gt;%</span></span>
-<span id="cb20-8"><a href="problems1.html#cb20-8"></a><span class="st">  </span>.[<span class="dv">1</span>,<span class="st">&quot;x&quot;</span>] <span class="op">%&gt;%</span></span>
-<span id="cb20-9"><a href="problems1.html#cb20-9"></a><span class="st">  </span><span class="kw">pull</span>(.) <span class="op">%&gt;%</span></span>
-<span id="cb20-10"><a href="problems1.html#cb20-10"></a><span class="st">  </span><span class="kw">print</span>(.)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="problems1.html#cb20-1" aria-hidden="true" tabindex="-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb20-2"><a href="problems1.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="problems1.html#cb20-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">array</span>(tensor<span class="sc">::</span><span class="fu">tensor</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">999</span>, <span class="dv">100</span><span class="sc">:</span><span class="dv">999</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="problems1.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">99999</span>) <span class="sc">%&gt;%</span> <span class="co">#We only want to test 6-digit answers. We&#39;re assuming there will be at least one 6-digit palindrome.</span></span>
+<span id="cb20-5"><a href="problems1.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">palindrome =</span> purrr<span class="sc">::</span><span class="fu">map_lgl</span>(x, is_palindrome, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-6"><a href="problems1.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(palindrome) <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href="problems1.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(x <span class="sc">==</span> <span class="fu">max</span>(x)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-8"><a href="problems1.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  .[<span class="dv">1</span>,<span class="st">&quot;x&quot;</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb20-9"><a href="problems1.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb20-10"><a href="problems1.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(.)</span></code></pre></div>
 <pre><code>## [1] 906609</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="problems1.html#cb22-1"></a>end_time &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</span>
-<span id="cb22-2"><a href="problems1.html#cb22-2"></a></span>
-<span id="cb22-3"><a href="problems1.html#cb22-3"></a><span class="kw">print</span>(end_time <span class="op">-</span><span class="st"> </span>start_time)</span></code></pre></div>
-<pre><code>## Time difference of 5.965245 secs</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="problems1.html#cb22-1" aria-hidden="true" tabindex="-1"></a>end_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb22-2"><a href="problems1.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="problems1.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(end_time <span class="sc">-</span> start_time)</span></code></pre></div>
+<pre><code>## Time difference of 6.269981 secs</code></pre>
 <p>We get the answer, 906 609, but it takes a while.</p>
 </div>
-<div id="method-b" class="section level3">
+<div id="method-b" class="section level3" number="2.5.3">
 <h3><span class="header-section-number">2.5.3</span> Method B</h3>
 <p>Method B is implemented below. We test every 6-digit palindrome, largest first, to see whether it can be written as a product of 3-digit numbers. If it can, we stop the loop, and print the result.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="problems1.html#cb24-1"></a>start_time &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</span>
-<span id="cb24-2"><a href="problems1.html#cb24-2"></a></span>
-<span id="cb24-3"><a href="problems1.html#cb24-3"></a>n =<span class="st"> </span><span class="dv">999</span></span>
-<span id="cb24-4"><a href="problems1.html#cb24-4"></a><span class="cf">while</span> (n <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span>) {</span>
-<span id="cb24-5"><a href="problems1.html#cb24-5"></a>  digits &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb24-6"><a href="problems1.html#cb24-6"></a>  digits[<span class="dv">1</span>] &lt;-<span class="st"> </span>n <span class="op">%%</span><span class="st"> </span><span class="dv">10</span></span>
-<span id="cb24-7"><a href="problems1.html#cb24-7"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="kw">length</span>(digits)) {</span>
-<span id="cb24-8"><a href="problems1.html#cb24-8"></a>    digits[i] &lt;-<span class="st"> </span>((n <span class="op">%%</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>i)) <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(digits <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">2</span>)))) <span class="op">/</span><span class="st"> </span><span class="dv">10</span><span class="op">**</span>(i<span class="dv">-1</span>)</span>
-<span id="cb24-9"><a href="problems1.html#cb24-9"></a>  }</span>
-<span id="cb24-10"><a href="problems1.html#cb24-10"></a>  palindrome &lt;-<span class="st"> </span>n <span class="op">*</span><span class="st"> </span><span class="dv">1000</span> <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>(digits <span class="op">*</span><span class="st"> </span><span class="dv">10</span><span class="op">**</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">0</span>))</span>
-<span id="cb24-11"><a href="problems1.html#cb24-11"></a>  </span>
-<span id="cb24-12"><a href="problems1.html#cb24-12"></a>  factors &lt;-<span class="st"> </span>(<span class="dv">100</span><span class="op">:</span><span class="dv">999</span>)[<span class="kw">which</span>(palindrome <span class="op">%%</span><span class="st"> </span>(<span class="dv">100</span><span class="op">:</span><span class="dv">999</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)]</span>
-<span id="cb24-13"><a href="problems1.html#cb24-13"></a>  </span>
-<span id="cb24-14"><a href="problems1.html#cb24-14"></a>  <span class="cf">if</span> (<span class="kw">any</span>(palindrome <span class="op">/</span><span class="st"> </span>factors <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span> <span class="op">&amp;</span><span class="st"> </span>palindrome <span class="op">/</span><span class="st"> </span>factors <span class="op">&lt;=</span><span class="st"> </span><span class="dv">999</span>)) {</span>
-<span id="cb24-15"><a href="problems1.html#cb24-15"></a>    <span class="kw">print</span>(palindrome)</span>
-<span id="cb24-16"><a href="problems1.html#cb24-16"></a>    <span class="cf">break</span></span>
-<span id="cb24-17"><a href="problems1.html#cb24-17"></a>  }</span>
-<span id="cb24-18"><a href="problems1.html#cb24-18"></a>  </span>
-<span id="cb24-19"><a href="problems1.html#cb24-19"></a>  n &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb24-20"><a href="problems1.html#cb24-20"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="problems1.html#cb24-1" aria-hidden="true" tabindex="-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb24-2"><a href="problems1.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="problems1.html#cb24-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">999</span></span>
+<span id="cb24-4"><a href="problems1.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (n <span class="sc">&gt;=</span> <span class="dv">100</span>) {</span>
+<span id="cb24-5"><a href="problems1.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  digits <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb24-6"><a href="problems1.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  digits[<span class="dv">1</span>] <span class="ot">&lt;-</span> n <span class="sc">%%</span> <span class="dv">10</span></span>
+<span id="cb24-7"><a href="problems1.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(digits)) {</span>
+<span id="cb24-8"><a href="problems1.html#cb24-8" aria-hidden="true" tabindex="-1"></a>    digits[i] <span class="ot">&lt;-</span> ((n <span class="sc">%%</span> (<span class="dv">10</span><span class="sc">**</span>i)) <span class="sc">-</span> <span class="fu">sum</span>(digits <span class="sc">*</span> (<span class="dv">10</span><span class="sc">**</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>)))) <span class="sc">/</span> <span class="dv">10</span><span class="sc">**</span>(i<span class="dv">-1</span>)</span>
+<span id="cb24-9"><a href="problems1.html#cb24-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb24-10"><a href="problems1.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  palindrome <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="dv">1000</span> <span class="sc">+</span> <span class="fu">sum</span>(digits <span class="sc">*</span> <span class="dv">10</span><span class="sc">**</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">0</span>))</span>
+<span id="cb24-11"><a href="problems1.html#cb24-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-12"><a href="problems1.html#cb24-12" aria-hidden="true" tabindex="-1"></a>  factors <span class="ot">&lt;-</span> (<span class="dv">100</span><span class="sc">:</span><span class="dv">999</span>)[<span class="fu">which</span>(palindrome <span class="sc">%%</span> (<span class="dv">100</span><span class="sc">:</span><span class="dv">999</span>) <span class="sc">==</span> <span class="dv">0</span>)]</span>
+<span id="cb24-13"><a href="problems1.html#cb24-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-14"><a href="problems1.html#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(palindrome <span class="sc">/</span> factors <span class="sc">&gt;=</span> <span class="dv">100</span> <span class="sc">&amp;</span> palindrome <span class="sc">/</span> factors <span class="sc">&lt;=</span> <span class="dv">999</span>)) {</span>
+<span id="cb24-15"><a href="problems1.html#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(palindrome)</span>
+<span id="cb24-16"><a href="problems1.html#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb24-17"><a href="problems1.html#cb24-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb24-18"><a href="problems1.html#cb24-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-19"><a href="problems1.html#cb24-19" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> n <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb24-20"><a href="problems1.html#cb24-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 906609</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="problems1.html#cb26-1"></a>end_time &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</span>
-<span id="cb26-2"><a href="problems1.html#cb26-2"></a></span>
-<span id="cb26-3"><a href="problems1.html#cb26-3"></a><span class="kw">print</span>(end_time <span class="op">-</span><span class="st"> </span>start_time)</span></code></pre></div>
-<pre><code>## Time difference of 0.02927542 secs</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="problems1.html#cb26-1" aria-hidden="true" tabindex="-1"></a>end_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb26-2"><a href="problems1.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="problems1.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(end_time <span class="sc">-</span> start_time)</span></code></pre></div>
+<pre><code>## Time difference of 0.03053188 secs</code></pre>
 <p>This was much faster! We can also test whether the early stopping is what made the difference by removing the break from the loop, to see how long the entire loop would have taken.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="problems1.html#cb28-1"></a>start_time &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</span>
-<span id="cb28-2"><a href="problems1.html#cb28-2"></a></span>
-<span id="cb28-3"><a href="problems1.html#cb28-3"></a>n =<span class="st"> </span><span class="dv">999</span></span>
-<span id="cb28-4"><a href="problems1.html#cb28-4"></a><span class="cf">while</span> (n <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span>) {</span>
-<span id="cb28-5"><a href="problems1.html#cb28-5"></a>  digits &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb28-6"><a href="problems1.html#cb28-6"></a>  digits[<span class="dv">1</span>] &lt;-<span class="st"> </span>n <span class="op">%%</span><span class="st"> </span><span class="dv">10</span></span>
-<span id="cb28-7"><a href="problems1.html#cb28-7"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="kw">length</span>(digits)) {</span>
-<span id="cb28-8"><a href="problems1.html#cb28-8"></a>    digits[i] &lt;-<span class="st"> </span>((n <span class="op">%%</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>i)) <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(digits <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span><span class="op">**</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">2</span>)))) <span class="op">/</span><span class="st"> </span><span class="dv">10</span><span class="op">**</span>(i<span class="dv">-1</span>)</span>
-<span id="cb28-9"><a href="problems1.html#cb28-9"></a>  }</span>
-<span id="cb28-10"><a href="problems1.html#cb28-10"></a>  palindrome &lt;-<span class="st"> </span>n <span class="op">*</span><span class="st"> </span><span class="dv">1000</span> <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>(digits <span class="op">*</span><span class="st"> </span><span class="dv">10</span><span class="op">**</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">0</span>))</span>
-<span id="cb28-11"><a href="problems1.html#cb28-11"></a>  </span>
-<span id="cb28-12"><a href="problems1.html#cb28-12"></a>  factors &lt;-<span class="st"> </span>(<span class="dv">100</span><span class="op">:</span><span class="dv">999</span>)[<span class="kw">which</span>(palindrome <span class="op">%%</span><span class="st"> </span>(<span class="dv">100</span><span class="op">:</span><span class="dv">999</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)]</span>
-<span id="cb28-13"><a href="problems1.html#cb28-13"></a>  </span>
-<span id="cb28-14"><a href="problems1.html#cb28-14"></a><span class="co">#  if (any(palindrome / factors &gt;= 100 &amp; palindrome / factors &lt;= 999)) {</span></span>
-<span id="cb28-15"><a href="problems1.html#cb28-15"></a><span class="co">#    print(palindrome)</span></span>
-<span id="cb28-16"><a href="problems1.html#cb28-16"></a><span class="co">#    break</span></span>
-<span id="cb28-17"><a href="problems1.html#cb28-17"></a><span class="co">#  }</span></span>
-<span id="cb28-18"><a href="problems1.html#cb28-18"></a>  </span>
-<span id="cb28-19"><a href="problems1.html#cb28-19"></a>  n &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb28-20"><a href="problems1.html#cb28-20"></a>}</span>
-<span id="cb28-21"><a href="problems1.html#cb28-21"></a></span>
-<span id="cb28-22"><a href="problems1.html#cb28-22"></a>end_time &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</span>
-<span id="cb28-23"><a href="problems1.html#cb28-23"></a></span>
-<span id="cb28-24"><a href="problems1.html#cb28-24"></a><span class="kw">print</span>(end_time <span class="op">-</span><span class="st"> </span>start_time)</span></code></pre></div>
-<pre><code>## Time difference of 0.05148315 secs</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="problems1.html#cb28-1" aria-hidden="true" tabindex="-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb28-2"><a href="problems1.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="problems1.html#cb28-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">999</span></span>
+<span id="cb28-4"><a href="problems1.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (n <span class="sc">&gt;=</span> <span class="dv">100</span>) {</span>
+<span id="cb28-5"><a href="problems1.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  digits <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb28-6"><a href="problems1.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  digits[<span class="dv">1</span>] <span class="ot">&lt;-</span> n <span class="sc">%%</span> <span class="dv">10</span></span>
+<span id="cb28-7"><a href="problems1.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(digits)) {</span>
+<span id="cb28-8"><a href="problems1.html#cb28-8" aria-hidden="true" tabindex="-1"></a>    digits[i] <span class="ot">&lt;-</span> ((n <span class="sc">%%</span> (<span class="dv">10</span><span class="sc">**</span>i)) <span class="sc">-</span> <span class="fu">sum</span>(digits <span class="sc">*</span> (<span class="dv">10</span><span class="sc">**</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>)))) <span class="sc">/</span> <span class="dv">10</span><span class="sc">**</span>(i<span class="dv">-1</span>)</span>
+<span id="cb28-9"><a href="problems1.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb28-10"><a href="problems1.html#cb28-10" aria-hidden="true" tabindex="-1"></a>  palindrome <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="dv">1000</span> <span class="sc">+</span> <span class="fu">sum</span>(digits <span class="sc">*</span> <span class="dv">10</span><span class="sc">**</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">0</span>))</span>
+<span id="cb28-11"><a href="problems1.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-12"><a href="problems1.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  factors <span class="ot">&lt;-</span> (<span class="dv">100</span><span class="sc">:</span><span class="dv">999</span>)[<span class="fu">which</span>(palindrome <span class="sc">%%</span> (<span class="dv">100</span><span class="sc">:</span><span class="dv">999</span>) <span class="sc">==</span> <span class="dv">0</span>)]</span>
+<span id="cb28-13"><a href="problems1.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-14"><a href="problems1.html#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  if (any(palindrome / factors &gt;= 100 &amp; palindrome / factors &lt;= 999)) {</span></span>
+<span id="cb28-15"><a href="problems1.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(palindrome)</span></span>
+<span id="cb28-16"><a href="problems1.html#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co">#    break</span></span>
+<span id="cb28-17"><a href="problems1.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co">#  }</span></span>
+<span id="cb28-18"><a href="problems1.html#cb28-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-19"><a href="problems1.html#cb28-19" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> n <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb28-20"><a href="problems1.html#cb28-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-21"><a href="problems1.html#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-22"><a href="problems1.html#cb28-22" aria-hidden="true" tabindex="-1"></a>end_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb28-23"><a href="problems1.html#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-24"><a href="problems1.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(end_time <span class="sc">-</span> start_time)</span></code></pre></div>
+<pre><code>## Time difference of 0.05172873 secs</code></pre>
 <p>This was still a lot faster! Theoretically, it’s hard to understand this, because both methods should have involved similar numbers of steps once you take out the early stopping in Method B.</p>
 <p>The reason for the very large difference is down to the way R works. R is an interpreted language, rather than compiled, which means it is slow in general (the code is interpreted as we go along, whereas a compiled language like C can be run directly on the processor). But certain operations in R are performed by compiled functions in the background, which are fast.</p>
 <p>Here, we’ve used vectorisation to test the factors of the number in Method B, which is fast, whereas testing for palindromes in Method A was done using a custom function. This custom function becomes extremely slow when repeated ~1000 000 times.</p>
@@ -498,7 +507,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -517,6 +525,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -537,6 +546,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Solutions_to_Project_Euler.pdf", "Solutions_to_Project_Euler.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
