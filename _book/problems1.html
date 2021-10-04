@@ -167,6 +167,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.2" data-path="problems1.html"><a href="problems1.html#method-a"><i class="fa fa-check"></i><b>2.5.2</b> Method A</a></li>
 <li class="chapter" data-level="2.5.3" data-path="problems1.html"><a href="problems1.html#method-b"><i class="fa fa-check"></i><b>2.5.3</b> Method B</a></li>
 </ul></li>
+<li class="chapter" data-level="2.6" data-path="problems1.html"><a href="problems1.html#problem-5"><i class="fa fa-check"></i><b>2.6</b> Problem 5</a></li>
+<li class="chapter" data-level="2.7" data-path="problems1.html"><a href="problems1.html#problem-6"><i class="fa fa-check"></i><b>2.7</b> Problem 6</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="problems1.html"><a href="problems1.html#base-r-3"><i class="fa fa-check"></i><b>2.7.1</b> Base R</a></li>
+<li class="chapter" data-level="2.7.2" data-path="problems1.html"><a href="problems1.html#tidyverse-3"><i class="fa fa-check"></i><b>2.7.2</b> Tidyverse</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -432,7 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="problems1.html#cb22-1" aria-hidden="true" tabindex="-1"></a>end_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb22-2"><a href="problems1.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="problems1.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(end_time <span class="sc">-</span> start_time)</span></code></pre></div>
-<pre><code>## Time difference of 6.269981 secs</code></pre>
+<pre><code>## Time difference of 5.855577 secs</code></pre>
 <p>We get the answer, 906 609, but it takes a while.</p>
 </div>
 <div id="method-b" class="section level3" number="2.5.3">
@@ -462,7 +468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="problems1.html#cb26-1" aria-hidden="true" tabindex="-1"></a>end_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb26-2"><a href="problems1.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="problems1.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(end_time <span class="sc">-</span> start_time)</span></code></pre></div>
-<pre><code>## Time difference of 0.03053188 secs</code></pre>
+<pre><code>## Time difference of 0.03550577 secs</code></pre>
 <p>This was much faster! We can also test whether the early stopping is what made the difference by removing the break from the loop, to see how long the entire loop would have taken.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="problems1.html#cb28-1" aria-hidden="true" tabindex="-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb28-2"><a href="problems1.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -488,11 +494,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb28-22"><a href="problems1.html#cb28-22" aria-hidden="true" tabindex="-1"></a>end_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb28-23"><a href="problems1.html#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-24"><a href="problems1.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(end_time <span class="sc">-</span> start_time)</span></code></pre></div>
-<pre><code>## Time difference of 0.05172873 secs</code></pre>
+<pre><code>## Time difference of 0.05241919 secs</code></pre>
 <p>This was still a lot faster! Theoretically, it’s hard to understand this, because both methods should have involved similar numbers of steps once you take out the early stopping in Method B.</p>
 <p>The reason for the very large difference is down to the way R works. R is an interpreted language, rather than compiled, which means it is slow in general (the code is interpreted as we go along, whereas a compiled language like C can be run directly on the processor). But certain operations in R are performed by compiled functions in the background, which are fast.</p>
 <p>Here, we’ve used vectorisation to test the factors of the number in Method B, which is fast, whereas testing for palindromes in Method A was done using a custom function. This custom function becomes extremely slow when repeated ~1000 000 times.</p>
 <p>If you are having trouble with code taking a long time to run in R, try to replace custom functions and loops with in-built functions and vectorisation where possible. As this example shows, this can make a much larger difference than trying to work out which approach is theoretically better.</p>
+</div>
+</div>
+<div id="problem-5" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Problem 5</h2>
+<p><a href="https://projecteuler.net/problem=5">Smallest Multiple</a></p>
+<blockquote>
+<p>2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.</p>
+<p>What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?</p>
+</blockquote>
+<p>Not today. If you want to do it check out <a href="github.com/jimr1603/R-solutions-to-Project-Euler">the project on GitHub</a>.</p>
+</div>
+<div id="problem-6" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Problem 6</h2>
+<p><a href="https://projecteuler.net/problem=6">Sum Squares</a></p>
+<blockquote>
+<p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
+</blockquote>
+<p>Full question on Euler site, uses maths notation.</p>
+<div id="base-r-3" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Base R</h3>
+<p>A pretty straightforward one where we can easily set up a vector of 1:100 in R:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="problems1.html#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb30-2"><a href="problems1.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="problems1.html#cb30-3" aria-hidden="true" tabindex="-1"></a>sum_squares <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb30-4"><a href="problems1.html#cb30-4" aria-hidden="true" tabindex="-1"></a>square_sum <span class="ot">=</span> (<span class="fu">sum</span>(x))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb30-5"><a href="problems1.html#cb30-5" aria-hidden="true" tabindex="-1"></a>square_sum <span class="sc">-</span> sum_squares</span></code></pre></div>
+<pre><code>## [1] 25164150</code></pre>
+</div>
+<div id="tidyverse-3" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Tidyverse</h3>
+<p>Not much advantage except for having a tidier environment:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="problems1.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="problems1.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum_squares =</span> <span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb32-3"><a href="problems1.html#cb32-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">square_sum =</span> (<span class="fu">sum</span>(x))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="problems1.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> square_sum <span class="sc">-</span> sum_squares) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-5"><a href="problems1.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">sum_squares</th>
+<th align="right">square_sum</th>
+<th align="right">diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">338350</td>
+<td align="right">25502500</td>
+<td align="right">25164150</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

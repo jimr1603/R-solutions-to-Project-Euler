@@ -343,3 +343,48 @@ The reason for the very large difference is down to the way R works. R is an int
 Here, we've used vectorisation to test the factors of the number in Method B, which is fast, whereas testing for palindromes in Method A was done using a custom function. This custom function becomes extremely slow when repeated ~1000 000 times.
 
 If you are having trouble with code taking a long time to run in R, try to replace custom functions and loops with in-built functions and vectorisation where possible. As this example shows, this can make a much larger difference than trying to work out which approach is theoretically better.
+
+
+## Problem 5
+
+[Smallest Multiple](https://projecteuler.net/problem=5)
+
+>  2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+>
+> What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+Not today. If you want to do it check out [the project on GitHub](github.com/jimr1603/R-solutions-to-Project-Euler).
+
+
+## Problem 6
+
+[Sum Squares](https://projecteuler.net/problem=6)
+
+> Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+
+Full question on Euler site, uses maths notation.
+
+### Base R
+
+A pretty straightforward one where we can easily set up a vector of 1:100 in R:
+
+```{r}
+x = 1:100
+
+sum_squares = sum(x^2)
+square_sum = (sum(x))^2
+square_sum - sum_squares
+
+```
+
+### Tidyverse
+
+Not much advantage except for having a tidier environment:
+
+```{r}
+tibble(x=1:100) %>% 
+  summarise(sum_squares = sum(x^2),
+            square_sum = (sum(x))^2) %>% 
+  mutate(diff = square_sum - sum_squares) %>% 
+  knitr::kable()
+```

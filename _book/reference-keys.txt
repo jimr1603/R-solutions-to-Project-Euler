@@ -20,3 +20,7 @@ problem-4
 initial-thoughts
 method-a
 method-b
+problem-5
+problem-6
+base-r-3
+tidyverse-3
